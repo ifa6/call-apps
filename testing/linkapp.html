@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="maximum-dpr=3" name="flexible" />
+    <meta content="modeName=750-12" name="grid" />
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>跳转</title>
+    <style>
+        .main:before{
+            content:"";
+            display:inline-block;
+            height:100%;
+            width:0;
+            vertical-align: middle;
+        }
+        html,body{
+            padding:0;
+            margin:0;
+            height:100%;
+            width:100%;
+        }
+        .main{
+            width:100%;
+            height:100%;
+            text-align:center;
+        }
+        .jump{
+            background: #fff;
+            border: 0;
+            display:inline-block;
+            vertical-align: middle;
+            width:600px;
+            height:220px;
+            color:#000;
+            font-size:40px;
+            text-align:center;
+            line-height:220px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <button class="DownLoad jump" ggj-url="ydlc://h5" down-url="https://tweb.youdingkeji.com/testing/download/link.html">正在加载，请稍等...</button>
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        function is_weixn(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function openApp(){
+            if(!is_weixn()){
+                $(".DownLoad").click(function () {
+                    var me = $(this);
+                    var url = me.attr("ggj-url"),
+                            href = me.attr("down-url");
+                    mobileAppInstall.open(url, href);
+                    return false;
+                });
+            }
+        }
+        openApp();
+        function getChromeIntent(a) {
+            // alert("ydlc://h5/?arg0=0&index="+a.split("//")[1]);
+            return "ydlc://h5/?arg0=0&index="+a.split("//")[1];
+        }
+        var mobileAppInstall = (function () {
+            var a = navigator.userAgent.toLowerCase(), b = window;
+            var c = {
+                isUc: a.indexOf("ucbrowser") > -1,
+                isAndroid: a.indexOf("android") > -1 || a.indexOf("linux") > -1,
+                isIos: a.indexOf("iphone") > -1,
+                isIpad: a.indexOf("ipad") > -1,
+                isDefault: a.indexOf("applewebkit") > -1 && a.indexOf("chrome") > -1,
+                timeout: 3000,
+                isInstall: false,
+                open: function (d, f) {
+                    var e = Date.now();
+                    c.openApp(d, f);
+                    setTimeout(function () {
+                        if (Date.now() - e < c.timeout + 100) {
+                            f && c.openH5(f)
+                        }
+                    }, c.timeout);
+                },
+                openApp: function (d, e) {
+                    if(c.isIos){
+                        b.location.href = d
+                    }else{
+                        b.location.href = getChromeIntent(d);
+
+                    }
+
+                    if (c.isDefault && !c.isIos) {
+                        if (c.isAndroid) {
+                            b.location.href = getChromeIntent(d);
+                        } else {
+
+                            b.location.href = d
+                        }
+                    } else {
+                        if (!c.isUc) {
+
+                            b.location.href = d
+                        } else {
+                            if (c.isAndroid) {
+                                b.location.href = getChromeIntent(d);
+                            } else {
+
+                                b.location.href = d
+                            }
+                        }
+                    }
+                },
+                openH5: function (d) {
+                    window.location.href=d;
+                }
+            };
+            return c
+        })();
+        $(".DownLoad").click()
+    });
+</script>
+</body>
+</html>
+
+
+
+

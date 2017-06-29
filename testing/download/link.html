@@ -1,0 +1,74 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <title>一鼎理财</title>
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <script type="text/javascript" language="javascript">
+            var scale = window.screen.width / 750;
+            document.write('<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no"/>');
+    </script>
+    <style>
+        *{margin: 0;padding: 0;}html{font-size: 14px;-webkit-tap-highlight-color: rgba(0,0,0,0);min-width: 320px;}body{font-family: "微软雅黑",Helvetica, STHeiTi, Arial, sans-serif;background: #f6f6f6;margin: 0 auto;min-width: 320px;}em,i{font-style:normal;}.TextOver{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}.telBtn{width:15.5rem;height:2.71rem;padding-top:0.29rem;border: 1px solid #B7B7B7;font-size:0.86rem;text-align:center;color: #BFBFBF;border-radius: 38px;position:fixed;bottom:1.43rem;left:50%;transform:translate(-50%,0)}.telBtn p{line-height: 1.21rem;margin-bottom:0.21rem;}.section{padding:1.43rem 1.29rem 0;}.dv1{height:1226px;background: url(img/img_01.png) no-repeat center;}.dv2{height:382px;background: url(img/img_02.png) no-repeat center;padding-top:70px;}.dv3{width:100%;height:100px;background: url(img/img_03.png) no-repeat center;position: fixed;bottom:0;}.dv4{height:100px;}.QRcode{width:200px;height:200px;background: #fff;border-radius: 4px;margin:0 auto;}
+        .ios-btn{
+            float: left;
+            width: 50%;
+            height: 100%;
+        }
+        .android-btn{
+            float: left;
+            width: 50%;
+            height: 100%;
+        }
+    </style>
+</head>   
+<body style="background-color: #fff;">  
+    <div class="dv1"></div>
+    <div class="dv2">
+        <div class="QRcode"></div>
+    </div>
+    <div class="dv3">
+        <div class="ios-btn"></div>
+        <div class="android-btn"></div>
+    </div>
+    <div class="dv4"></div>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { 
+                $('.ios-btn').on('click',function(){
+                    window.location.href ="https://itunes.apple.com/cn/app/%E4%B8%80%E9%BC%8E%E7%90%86%E8%B4%A2/id1229582875?l=en&mt=8";
+                });
+                $('.android-btn').on('click',function(){
+                    
+                });
+            } else if (/(Android)/i.test(navigator.userAgent)) {
+                $('.ios-btn').on('click',function(){
+                    
+                });
+                $('.android-btn').on('click',function(){
+                    window.location.href ="http://yiding-package.oss-cn-shanghai.aliyuncs.com/android_package/app-YDdefault-release.apk";
+                });
+            } else {
+                
+            };
+        });
+    </script>
+</body>  
+</html>  
+
+
+
+
+

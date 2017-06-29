@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="maximum-dpr=3" name="flexible" />
+    <meta content="modeName=750-12" name="grid" />
+    <title>跳转</title>
+    <link rel="stylesheet" href="https://mobile.stlc.cn/build/lab/css/style.min.css"/>
+    <script src="https://mobile.stlc.cn/build/lab/js/stoneAll.min.js?v=22"></script>
+    <style>
+        .jump{
+            color:#96c6ea;  font-size:0.32rem;margin-top:1.33rem ;margin-left:0.26rem ;
+        }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9ee50e58345a9da1ab6319a88e517740";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+<div class="main">
+    <button class="DownLoad jump" ggj-url="stonelc://2" down-url="http://m.stlc.cn">正在加载，请稍等..</button>
+    <!--<a href="m://my.com/?arg0=0&arg1=2">测试</a>-->
+</div>
+<script>
+    $(function(){
+        function is_weixn(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function openApp(){
+            if(!is_weixn()){
+                $(".DownLoad").click(function () {
+                    var me = $(this);
+                    var url = me.attr("ggj-url"),
+                            href = me.attr("down-url");
+                    mobileAppInstall.open(url, href);
+                    return false;
+                });
+            }
+        }
+        openApp();
+        function getChromeIntent(a) {
+            return "stone://stlc.com/?arg0=0&index="+a.split("//")[1];
+        }
+        var mobileAppInstall = (function () {
+            var a = navigator.userAgent.toLowerCase(), b = window;
+            var c = {
+                isUc: a.indexOf("ucbrowser") > -1,
+                isAndroid: a.indexOf("android") > -1 || a.indexOf("linux") > -1,
+                isIos: a.indexOf("iphone") > -1,
+                isIpad: a.indexOf("ipad") > -1,
+                isDefault: a.indexOf("applewebkit") > -1 && a.indexOf("chrome") > -1,
+                timeout: 3000,
+                isInstall: false,
+                open: function (d, f) {
+                    var e = Date.now();
+                    c.openApp(d, f);
+                    setTimeout(function () {
+                        if (Date.now() - e < c.timeout + 100) {
+                            f && c.openH5(f)
+                        }
+                    }, c.timeout);
+                },
+                openApp: function (d, e) {
+                    if(c.isIos){
+                        b.location.href = d
+                    }else{
+                        b.location.href = getChromeIntent(d);
+
+                    }
+
+                    if (c.isDefault && !c.isIos) {
+                        if (c.isAndroid) {
+                            b.location.href = getChromeIntent(d);
+                        } else {
+
+                            b.location.href = d
+                        }
+                    } else {
+                        if (!c.isUc) {
+
+                            b.location.href = d
+                        } else {
+                            if (c.isAndroid) {
+                                b.location.href = getChromeIntent(d);
+                            } else {
+
+                                b.location.href = d
+                            }
+                        }
+                    }
+                },
+                openH5: function (d) {
+                    window.location.href=d;
+                }};
+            return c
+        })();
+        $(".DownLoad").click()
+    });
+
+
+</script>
+</body>
+</html>
+
+
+
+
